@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fe223b7d75756429dbdec99c330267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealh: 50
+  _animationDuration: 1
 --- !u!1 &784138904
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,8 +522,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 716459678}
-        m_MethodName: Increase
+      - m_Target: {fileID: 1229255144}
+        m_MethodName: OnHeal
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -655,6 +655,8 @@ GameObject:
   - component: {fileID: 1229255140}
   - component: {fileID: 1229255142}
   - component: {fileID: 1229255141}
+  - component: {fileID: 1229255144}
+  - component: {fileID: 1229255143}
   m_Layer: 5
   m_Name: Hero
   m_TagString: Untagged
@@ -718,6 +720,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229255139}
   m_CullTransparentMesh: 0
+--- !u!114 &1229255143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229255139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559b49f94eca6eb47a2b85182d17a7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 50
+  _healthBar: {fileID: 716459678}
+--- !u!114 &1229255144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229255139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a284f4d59b889ed4faee17dcbaf5382e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 1229255143}
 --- !u!1 &1447977567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,8 +1154,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 716459678}
-        m_MethodName: Decrease
+      - m_Target: {fileID: 1229255144}
+        m_MethodName: OnDamage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
