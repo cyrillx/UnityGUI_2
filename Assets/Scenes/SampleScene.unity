@@ -732,8 +732,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559b49f94eca6eb47a2b85182d17a7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _changed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 716459678}
+        m_MethodName: Animate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _maxHealth: 50
-  _healthBar: {fileID: 716459678}
 --- !u!114 &1229255144
 MonoBehaviour:
   m_ObjectHideFlags: 0
