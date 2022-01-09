@@ -732,7 +732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559b49f94eca6eb47a2b85182d17a7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changed:
+  _healthChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 716459678}
@@ -1168,7 +1168,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1229255143}
-        m_MethodName: Damage
+        m_MethodName: TakeDamage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

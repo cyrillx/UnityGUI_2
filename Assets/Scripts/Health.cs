@@ -5,9 +5,10 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private HealthEvent _changed;
+    [SerializeField] private HealthEvent _healthChanged;
     [SerializeField] private int _maxHealth;
 
+    private int _minHealth = 0;
     private int _currentHealth;
 
     private void Start()
@@ -15,19 +16,27 @@ public class Health : MonoBehaviour
         _currentHealth = _maxHealth;
     }
 
-    public void Damage(int points)
+    private void FixWithinLimits()
+    {
+        _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
+    }
+
+    private void NotifyChangeListeners()
+    {
+        _healthChanged.Invoke(_currentHealth, _maxHealth);
+    }
+
+    public void TakeDamage(int points)
     {
         _currentHealth -= points;
-        if (_currentHealth < 0)
-            _currentHealth = 0;
-        _changed.Invoke(_currentHealth, _maxHealth);
+        FixWithinLimits();
+        NotifyChangeListeners();
     }
 
     public void Heal(int points)
     {
         _currentHealth += points;
-        if (_currentHealth > _maxHealth)
-            _currentHealth = _maxHealth;
-        _changed.Invoke(_currentHealth, _maxHealth);
+        FixWithinLimits();
+        NotifyChangeListeners();
     }
 }
