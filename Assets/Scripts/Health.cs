@@ -5,6 +5,7 @@ public class Health : MonoBehaviour
     [SerializeField] private HealthEvent _healthChanged;
     [SerializeField] private int _maxHealth;
 
+    private int _defaultMaxHealt = 1;
     private int _minHealth = 0;
     private int _currentHealth;
 
@@ -15,8 +16,8 @@ public class Health : MonoBehaviour
 
     private void OnValidate()
     {
-        if (_maxHealth < _minHealth)
-            _maxHealth = _minHealth;
+        if (_maxHealth <= _minHealth)
+            _maxHealth = _defaultMaxHealt;
     }
 
     public void TakeDamage(int points)
