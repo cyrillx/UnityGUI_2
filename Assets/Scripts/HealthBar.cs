@@ -7,13 +7,7 @@ public class HealthBar : MonoBehaviour
 
     public void Animate(int newHealth, int maxHealth)
     {
-        float targetValue;
-
-        if (maxHealth > 0)
-            targetValue = (float)newHealth / maxHealth;
-        else
-            targetValue = 0;
-
+        float targetValue = (float)newHealth / maxHealth;
         transform.DOScaleX(targetValue, _animationDuration);
     }
 }
