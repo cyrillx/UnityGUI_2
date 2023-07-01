@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
 public class Health : MonoBehaviour
 {
@@ -16,7 +13,27 @@ public class Health : MonoBehaviour
         _currentHealth = _maxHealth;
     }
 
-    private void FixWithinLimits()
+    private void OnValidate()
+    {
+        if (_maxHealth < _minHealth)
+            _maxHealth = _minHealth;
+    }
+
+    public void TakeDamage(int points)
+    {
+        _currentHealth -= points;
+        Clamp();
+        NotifyChangeListeners();
+    }
+
+    public void Heal(int points)
+    {
+        _currentHealth += points;
+        Clamp();
+        NotifyChangeListeners();
+    }
+
+    private void Clamp()
     {
         _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
     }
@@ -24,19 +41,5 @@ public class Health : MonoBehaviour
     private void NotifyChangeListeners()
     {
         _healthChanged.Invoke(_currentHealth, _maxHealth);
-    }
-
-    public void TakeDamage(int points)
-    {
-        _currentHealth -= points;
-        FixWithinLimits();
-        NotifyChangeListeners();
-    }
-
-    public void Heal(int points)
-    {
-        _currentHealth += points;
-        FixWithinLimits();
-        NotifyChangeListeners();
     }
 }
